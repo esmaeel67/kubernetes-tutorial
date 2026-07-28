@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod-with-one-container
+spec:
+  containers:
+  - image: esmaeil157/demo-app:v1.0.0
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP

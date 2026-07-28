@@ -1,0 +1,10 @@
+learn yaml: https://learnxinyminutes.com/yaml/
+docs : kubernetes api -> workload resources -> pod : imagePullPolicy
+
+
+kubectl create -f pod-with-one-container.yml 
+
+
+kubectl explain pods
+
+kubectl explain pods.spec.containers

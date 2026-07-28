@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-app-with-two-containers
+spec:
+  containers:
+  - image: esmaeil157/demo-app:v1.0.0
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+  - image: nginx:alpine
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    # - containerPort: 443
+    #   protocol: TCP
