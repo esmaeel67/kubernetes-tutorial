@@ -1,0 +1,18 @@
+kubectl get nodes -o wide --show-labels
+
+kubectl get nodes -o wide -L disk --show-labels
+
+// show disk
+kubectl get nodes -o wide -L disk
+
+// show disk and gpu
+kubectl get nodes -o wide -L disk,gpu
+
+kubectl label nodes nodeName disk=ssd
+
+kubectl label nodes test-pod-label-worker disk=ssd
+
+
+// now schedule
+kubectl create -f pods-label/pod-with-nodeSelector.yml
+kubectl get nodes -o wide -L disk,gpu
