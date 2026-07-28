@@ -24,3 +24,8 @@ curl to address and you can see result of app response
 sample:
 curl 127.0.0.1:8000
 Hello from demo-app-with-two-containers
+
+kubectl port-forward pods/demo-app-with-two-containers 8090:80
+
+kubectl exec -it --stdin demo-app-with-two-containers -c nginx -- /bin/sh
+kubectl exec -it --stdin demo-app-with-two-containers -c nginx -- /bin/bash
