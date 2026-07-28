@@ -1,0 +1,11 @@
+kind create cluster --image kindest/node:v1.25.0 --config annotation/kind-cluster.yml --name cluster-annotations
+
+kubectl get nodes -o wide
+
+kubectl create -f annotation/pod-with-annotations.yaml 
+
+// we can see annotation 
+ kubectl get pods -o yaml
+
+// add new annotation
+kubectl annotate pods demo-pod-with-annotations managed-by=sre-A
