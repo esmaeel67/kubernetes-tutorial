@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod-with-annotations
+  labels:
+    name: demo
+    project: A
+    env: stg
+  annotations:
+    test.com/created-by: team-A
+    created-by: team-A
+spec:
+  containers:
+  - image: esmaeil157/demo-app:v1.0.0
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
