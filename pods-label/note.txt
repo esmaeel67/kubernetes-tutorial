@@ -1,0 +1,47 @@
+label format:
+Domain/key: value
+example:
+app.kubernetes.io/key: value
+app.kubernetes.io/name: test
+
+// search and check docs: kubernetes recommended label
+// create cluster
+kind create cluster --image kindest/node:v1.25.0 --config kind-cluster.yml --name test-pod-label
+
+
+kubectl get nodes
+
+kubectl run demo-app-from-cmd --image=esmaeil157/demo-app:v1.0.0 --port 8080
+
+kubectl create -f pods-label/pod-with-labels-1.yml 
+kubectl create -f pods-label/pod-with-labels-2.yml 
+kubectl create -f pods-label/pod-with-labels-3.yml 
+kubectl create -f pods-label/pod-with-labels-4.yml 
+
+kubectl get pods -o wide --show-labels
+
+// just show labe run
+kubectl get pods -o wide -L run
+
+// hard filter
+kubectl get pods -o wide -L run | grep -i demo-app
+
+kubectl get pods -o wide -l env=stg --show-labels
+kubectl get pods -o wide -l env!=stg --show-labels
+
+// filter with in
+kubectl get pods -o wide -l 'env in (stg,test)' --show-labels
+kubectl get pods -o wide -l 'env notin (stg,test)' --show-labels
+// just have key run
+ kubectl get pods -o wide  --show-labels -l run
+ // and not this key
+  kubectl get pods -o wide  --show-labels -l '!run'
+
+// show label value only env
+kubectl get pods -o wide -L env
+
+// update label and key env
+kubectl label pods demo-app-from-cmd env=test
+kubectl label pods demo-app-from-cmd env=test --overwrite
+
+
