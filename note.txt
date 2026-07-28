@@ -8,3 +8,19 @@ kubectl create -f pod-with-one-container.yml
 kubectl explain pods
 
 kubectl explain pods.spec.containers
+
+kubectl get pods -o wide
+kubectl get pods -o yaml
+
+kubectl get pods demo-pod-with-one-container -o yaml
+
+kubectl logs pods/demo-pod-with-one-container
+command : -c containerName
+kubectl logs pods/demo-app-with-two-containers -c nginx
+kubectl logs pods/demo-app-with-two-containers -c app
+
+kubectl port-forward pods/demo-app-with-two-containers 8000:8080
+curl to address and you can see result of app response
+sample:
+curl 127.0.0.1:8000
+Hello from demo-app-with-two-containers
