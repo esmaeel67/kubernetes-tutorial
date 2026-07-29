@@ -11,6 +11,7 @@ container lifecycle hooks:
 1- preStart hooks
 2- preStop hook
 
+check key : terminationGracePeriodSeconds
 
 
  time kubectl delete pods app-special -n delete-pod
