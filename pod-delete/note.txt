@@ -1,0 +1,26 @@
+
+kubectl delete pods podName
+kubectl delete pods podName -n namespace
+// background job
+// schedule
+when we run delete command and its send request to kube api server
+send sigterm to all containers on pod then wait to gracefully shutdown (30s wait to gracefully shutdown otherwise send signal kill)
+how we can customize 30 second: termination grace period second: default 30s
+
+container lifecycle hooks:
+1- preStart hooks
+2- preStop hook
+
+check key : terminationGracePeriodSeconds
+
+
+ time kubectl delete pods app-special -n delete-pod
+
+// delete by label
+kubectl delete pods -l project=B -n delete-pod
+
+// delete all
+kubectl delete pods --all -n delete-pod
+
+// delete namespace and delete all of its pods
+kubectl delete namespace delete-pod
