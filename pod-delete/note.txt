@@ -15,3 +15,12 @@ check key : terminationGracePeriodSeconds
 
 
  time kubectl delete pods app-special -n delete-pod
+
+// delete by label
+kubectl delete pods -l project=B -n delete-pod
+
+// delete all
+kubectl delete pods --all -n delete-pod
+
+// delete namespace and delete all of its pods
+kubectl delete namespace delete-pod
