@@ -1,6 +1,7 @@
 learn yaml: https://learnxinyminutes.com/yaml/
 docs : kubernetes api -> workload resources -> pod : imagePullPolicy
 
+kind create cluster --image kindest/node:v1.25.0 --config kind-cluster.yml --name test-pod-label
 
 kubectl create -f pod-with-one-container.yml 
 

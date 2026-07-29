@@ -1,0 +1,31 @@
+// create cluster
+kind  create cluster --image kindest/node:v1.25.0 --config ./pod-with-ns/kind-cluster.yml --name pod-with-ns
+
+kubectl run  demo-pod-ns --image=nginx:alpine
+
+kubectl run  demo-pod-ns --image=ubuntu:latest
+
+
+kubectl get namespace
+kubectl delete namespace demo
+
+// get pods in specific namespace with -n
+kubectl get pods -o wide -n kube-system
+
+// create namespace with command
+kubectl create namespace demo
+
+// create namespace with file
+kubectl create -f pod-with-ns/namespace.yml 
+
+// create pod with file
+kubectl create -f pod-with-ns/pod-with-ns.yml
+
+// we can see pod on namespace demo
+ kubectl get pods -n demo
+
+ // we can create another namespace and assign pod to different namespace and with same name
+ kubectl create namespace demo-a
+
+ kubectl create -f ./pod-with-ns/pod-with-nsa.yml
+ // now we have pod with same name on different namespace
