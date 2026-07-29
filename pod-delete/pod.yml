@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-1-a
+  namespace: delete-pod
+  labels:
+    name: app-1
+    project: A
+  annotations:
+    created-by: team-A
+spec:
+  containers:
+    - image: esmaeil157/demo-app:v1.0.0
+      name: app 
+      ports:
+      - containerPort: 8080
+        protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-2-a
+  namespace: delete-pod
+  labels:
+    name: app-2
+    project: A
+  annotations:
+    created-by: team-A
+spec:
+  containers:
+  - image: esmaeil157/demo-app:v1.0.0
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-1-b
+  namespace: delete-pod
+  labels:
+    name: app-1
+    project: B
+  annotations:
+    created-by: team-B
+spec:
+  containers:
+  - image: esmaeil157/demo-app:v1.0.0
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-2-b
+  namespace: delete-pod
+  labels:
+    name: app-2
+    project: B
+  annotations:
+    created-by: team-B
+spec:
+  containers:
+  - image: esmaeil157/demo-app:v1.0.0
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-special
+  namespace: delete-pod
+  labels:
+    name: app-special
+    project: C
+  annotations:
+    created-by: team-C
+spec:
+  containers:
+  - image: esmaeil157/demo-app:v1.0.0
+    name: app
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    lifecycle:
+      preStop:
+        exec:
+          command:
+          - /bin/sh
+          - -c
+          - sleep 15
+  terminationGracePeriodSeconds: 120
+# ---
+# custom-yaml-file: true
