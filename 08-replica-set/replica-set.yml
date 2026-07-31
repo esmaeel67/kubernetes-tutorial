@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app
+  namespace: replica-set  
+  labels:
+    name: app
+    project: A
+  annotations:
+    created-by: team-A
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: app
+      project: A
+    # matchExpressions:
+    # - key: name
+    #   operator: In
+    #   values:
+    #   - app
+    # - key: project
+    #   operator: Exists | In | NotIn | DoesNotExist
+    #   values:
+    #    - A
+    #    - B
+  template:
+    metadata:
+      name: app
+      labels:
+        name: app
+        project: A      
+    spec:
+      containers:
+        - name: app
+          image: esmaeil157/demo-app:v1.0.0
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+            name: http
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /

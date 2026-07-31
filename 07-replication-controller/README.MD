@@ -30,13 +30,13 @@ creating or deleting pods as needed.
 which offer additional features like rolling updates and rollback capabilities. However,
 Replication Controllers are still supported in Kubernetes for backward compatibility.
 
-> ```
+> ```bash
 > kind create cluster --image kindest/node:v1.25.0  --config ./replication-controller/kind-cluster.yml --name replica-cluster
 > kubectl create -f ./replication-controller/namespace.yaml
 > kubectl create -f ./replication-controller/replication-controller.yml
 > kubectl -n replica-ns get pods
 > kubectl delete -f ./replication-controller/replication-controller.yml 
-> ```
+
 
 ## Editing a ReplicationController
 
