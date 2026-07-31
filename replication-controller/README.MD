@@ -47,17 +47,17 @@ rc: The resource type - ReplicationController (abbreviated as rc)
 
 ```bash
 kubectl -n replica-ns edit rc app
-> ```
+
 
 ## Inspecting a ReplicationController
 This command provides detailed information about the ReplicationController named app in the replica-ns namespac
 ### Command
 ```bash
 kubectl -n replica-ns describe rc app
-> ```
+
 ## Delete rc(ReplicationController)
 ### Command
-```base
+
 kubectl -n replica-ns delete rc app
 
 delete replication controller without delete pod --cascade=orphan
@@ -68,4 +68,4 @@ kubectl -n replica-ns delete rc app --cascade=orphan
 ### Command
 ```bash
 kubectl -n replica-ns get pods -o wide -w
-> ```
+

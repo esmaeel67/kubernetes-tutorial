@@ -8,5 +8,7 @@
 
 ```bash
 kubectl -n replica-ns get pods -o wide -w
+
+#Watch nodes 
 kubectl get nodes -w
-> ```
+
