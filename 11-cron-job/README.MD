@@ -36,3 +36,29 @@ A **CronJob** is a Kubernetes controller that runs Jobs on a scheduled basis, si
 | `kubectl logs -n kube-system deployment/cronjob-controller` | View CronJob controller logs |
 
 `kubectl get cronjobs.batch  -n cronjob-ns`
+
+## CronJob Concurrency and Deadline Configuration
+
+These two critical settings control how CronJobs handle overlapping executions and missed schedules in your Kubernetes cluster.
+
+---
+
+### Concurrency Policy
+
+#### Configuration
+
+```yaml
+spec:
+  concurrencyPolicy: Forbid  # Allow | Forbid | Replace
+```
+
+## startingDeadlineSeconds
+
+`startingDeadlineSeconds` defines the maximum time (in seconds) the CronJob controller will wait to start a Job that missed its scheduled time. If the deadline is exceeded, the Job is skipped and counted as a missed execution.
+
+### Syntax
+
+```yaml
+spec:
+  startingDeadlineSeconds: 15   # Wait up to 15 seconds
+```
