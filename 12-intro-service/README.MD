@@ -43,7 +43,10 @@ spec:
 ### Core DNS
 
 > convert host to ip(in container)
-> cat /etc/resolv.conf
+> ```cat /etc/resolv.conf``` and check search keys
+> search
+> nameserver
+> options ndots:5
 ```kubectl -n kube-system get pod -o wide```
 
 ```kubectl -n kube-system get services -o wide```
