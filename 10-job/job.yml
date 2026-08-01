@@ -16,5 +16,5 @@ spec:
       # restart policy Never | Always | OnFailure
   completions: 5 # finish successful not failed 
   parallelism: 2
-  # activeDeadlineSeconds: 100
-  # backoffLimit: 4
+  activeDeadlineSeconds: 100
+  backoffLimit: 4 # setting about a job can be retried before finish limitation
