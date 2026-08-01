@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: service-app
+  namespace: service-intro
+  labels:
+    name: service-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: service-app
+  template:
+    metadata:
+      name: service-app
+      labels:
+        name: service-app
+    spec:
+      containers:
+      - image: esmaeil157/demo-app:v1.0.0
+        name: service-app
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: http
+        livenessProbe:
+          httpGet:
+            port: http
+            path: /
