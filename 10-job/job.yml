@@ -11,11 +11,10 @@ spec:
       containers:
       - name: sample-job
         image: busybox:latest
-        command: ["sleep",  "30"]
+        command: ["sleep",  "5"]
       restartPolicy: Never
       # restart policy Never | Always | OnFailure
-
-  # completions: 5
-  # parallelism: 2
-  # activeDeadlineSeconds: 100
-  # backoffLimit: 4
+  completions: 5 # finish successful not failed 
+  parallelism: 2
+  activeDeadlineSeconds: 100
+  backoffLimit: 4 # setting about a job can be retried before finish limitation
