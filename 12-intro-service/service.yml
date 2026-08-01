@@ -11,7 +11,7 @@ spec:
     # targetPort: 8080
     name: http
     targetPort: http
-  - port: 443
-    targetPort: http
-    name: https
+  # - port: 443
+  #   targetPort: http
+  #   name: https
   # sessionAffinity: ClientIP # 
