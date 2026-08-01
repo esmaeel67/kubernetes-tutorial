@@ -8,10 +8,10 @@ spec:
     app: service-app
   ports:
   - port: 80
-    targetPort: 8080
-    # targetPort: http
-    # name: http
-  # - port: 443
-  #   targetPort: 8443
-  #   name: https
-  sessionAffinity: ClientIP # 
+    # targetPort: 8080
+    name: http
+    targetPort: http
+  - port: 443
+    targetPort: http
+    name: https
+  # sessionAffinity: ClientIP # 
