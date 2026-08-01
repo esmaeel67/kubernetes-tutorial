@@ -44,7 +44,8 @@ kubectl delete job pi-calculator
 kubectl delete jobs --all
 ```
 
-> Step one create cluster : \ `kind create cluster --image kindest/node:v1.25.0  --config ./10-job/kind-cluster.yml --name job-cluster` \
+> Step one create cluster :
+> `kind create cluster --image kindest/node:v1.25.0  --config ./10-job/kind-cluster.yml --name job-cluster` \
 > Step Two create namespace : `kubectl create -f ./10-job/namespace.yml` \
 > Step three create job: `kubectl create -f ./10-job/job.yml` \
 > After 30 second we can check pod status and it changed from Running to Completed \
