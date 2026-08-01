@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sample-cronjob
+  namespace: cronjob-ns
+  labels:
+    name: simple-cronjob
+spec:
+  schedule: "* * * * *"
+  concurrencyPolicy: Forbid # Allow | Forbid just run single
+  startingDeadlineSeconds: 15
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            name: simple-cronjob
+        spec:
+          containers:
+          - name: simple-job
+            image: busybox:latest
+            imagePullPolicy: IfNotPresent
+            command:
+            - sleep
+            - "30"            
+          restartPolicy: OnFailure
