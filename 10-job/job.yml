@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-job
+  namespace: job-ns
+  labels:
+    name: sample-job
+spec:  
+  template:
+    spec:
+      containers:
+      - name: sample-job
+        image: busybox:latest
+        command: ["sleep",  "30"]
+      restartPolicy: Never
+      # restart policy Never | Always | OnFailure
+
+  # completions: 5
+  # parallelism: 2
+  # activeDeadlineSeconds: 100
+  # backoffLimit: 4
