@@ -39,3 +39,11 @@ spec:
     clientIP:
       timeoutSeconds: 10800   # 3 hours (default)
 ```
+
+### Core DNS
+
+> convert host to ip(in container)
+> cat /etc/resolv.conf
+```kubectl -n kube-system get pod -o wide```
+
+```kubectl -n kube-system get services -o wide```
