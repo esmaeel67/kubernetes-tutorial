@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-db
+  namespace: service-intro
+spec:
+  type: ExternalName
+  # Not a valid domain!
+  externalName: domain.com
+  ports:
+  - port: 6379
