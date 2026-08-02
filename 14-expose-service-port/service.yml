@@ -10,6 +10,7 @@ spec:
   - port: 80
     targetPort: http
     # NodePorts are in the 30000-32767 range by default
-    nodePort: 30100
-  type: NodePort
-  # externalTrafficPolicy: Local
+    # nodePort: 30100
+  # type: NodePort
+  type: LoadBalancer
+  externalTrafficPolicy: Local
