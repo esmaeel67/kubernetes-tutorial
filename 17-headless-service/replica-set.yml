@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app-demo
+  namespace: headless-service
+  labels:
+    app: app-demo
+    key: value
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: app-demo
+  template:
+    metadata:
+      name: app-demo
+      labels:
+        name: app-demo
+    spec:
+      containers:
+        - name: app-demo-ca
+          image:  esmaeil157/demo-app:v1.0.0
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+            name: http
+          livenessProbe:
+            httpGet:
+              port: http
+              path: /
+          readinessProbe:
+            httpGet:
+              port: http
+              path: /                
+            # initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 3
