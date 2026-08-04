@@ -9,6 +9,8 @@
 ```bash
 # Create cluster
 kind create cluster --image kindest/node:v1.25.0  --config ./replication-controller/kind-cluster.yml --name replica-cluster
+# delete cluster 
+kind delete clusters job-cluster
 
 # Watch pods
 kubectl -n replica-ns get pods -o wide -w
