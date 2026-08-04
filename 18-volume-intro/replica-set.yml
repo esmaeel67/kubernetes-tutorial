@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app-demo
+  namespace: volume-ns
+  labels:
+    app: app-demo
+    key: value
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: app-demo
+  template:
+    metadata:
+      name: app-demo
+      labels:
+        name: app-demo
+    spec:
+      containers:      
+      - image: nginx:alpine
+        name: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          name: http
+        volumeMounts:
+        - name: content
+          mountPath: /usr/share/nginx/html
+          readOnly: true
+      - name: app-demo-ca
+        image:  esmaeil157-demo-app:v1
+        volumeMounts:
+        - name: content
+          mountPath: /var/contents
+      volumes:
+      - name: content
+        emptyDir: {}
+
+        # ports:
+        # - containerPort: 8080
+        #   protocol: TCP
+        #   name: http
+        # livenessProbe:
+        #   httpGet:
+        #     port: http
+        #     path: /
+        # readinessProbe:
+        #   httpGet:
+        #     port: http
+        #     path: /                
+        #   # initialDelaySeconds: 30
+        #   periodSeconds: 10
+        #   timeoutSeconds: 1
+        #   successThreshold: 1
+        #   failureThreshold: 3
