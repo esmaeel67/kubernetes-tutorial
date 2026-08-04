@@ -26,3 +26,5 @@ kubectl get nodes replica-cluster-control-plane -o yaml
 # Example delete pod or daemon set command
 kubectl delete -f ./09-daemon-set/daemon-set.yml
 
+# exec specific container with -C
+kubectl -n volume-ns exec -it app-demo-tsz24 -c nginx -- /bin/sh
