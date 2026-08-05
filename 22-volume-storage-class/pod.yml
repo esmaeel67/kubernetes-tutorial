@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres
+  namespace: psc-ns
+  labels:
+    name: postgres
+spec:
+  containers:
+  - image: postgres:15.1-alpine3.16
+    name: postgres
+    ports:
+    - containerPort: 5432
+      protocol: TCP
+    volumeMounts:
+    - name: data
+      mountPath: /var/lib/postgresql/data
+    env:
+    - name: POSTGRES_PASSWORD
+      value: password
+    resources:                    # ← Added
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+  volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: postgres-pvc
