@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: postgres-pv
+  # its cluster wide
+  # we don't have scope namespace for PersistentVolume
+spec:
+  capacity:
+    # 1 GibiByte = 1.07 GB = 2 ^ 30 byte
+    # 1 Mi = 1.04 MB = 2 ^ 20 byte
+    storage: 1Gi
+  # volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+    - ReadWriteMany
+    # - ReadWriteOncePod
+  persistentVolumeReclaimPolicy: Retain #Recycle
+  storageClassName: "" # slow
+  mountOptions:
+    # - hard
+    - nfsvers=4.1
+  nfs:
+    path: /data/postgres
+    server: 172.17.0.2
