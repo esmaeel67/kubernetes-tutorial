@@ -30,3 +30,17 @@ kubectl delete -f ./09-daemon-set/daemon-set.yml
 
 # exec specific container with -C
 kubectl -n volume-ns exec -it app-demo-tsz24 -c nginx -- /bin/sh
+
+
+
+### Force Delete Commands
+
+#### 1. **Delete Pod with Force**
+# Force delete pod
+kubectl delete pod <pod-name> --force --grace-period=0
+
+# Force delete pod with namespace
+kubectl delete pod <pod-name> -n <namespace> --force --grace-period=0
+
+# Delete all pods in namespace with force
+kubectl delete pods --all -n <namespace> --force --grace-period=0
